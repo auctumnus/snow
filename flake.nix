@@ -49,7 +49,7 @@
           };
         };
       flake = {
-        overlays.default = final: prev: {
+        overlays.default = _final: prev: {
           hydrapaper-auctumnus = self.packages.${prev.system}.hydrapaper-auctumnus;
         };
         nixosModules = lib.dirToAttrset ./modules;
