@@ -19,6 +19,7 @@ in
       ghostty.enable = lib.mkDefault true;
       vscode.enable = lib.mkDefault true;
       mpv.enable = lib.mkDefault true;
+      halloy.enable = lib.mkDefault true;
     };
 
     home-manager.sharedModules = [

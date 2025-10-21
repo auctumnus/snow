@@ -16,6 +16,7 @@ in
     snow = {
       gpg.enable = lib.mkDefault true;
       nixvim.enable = lib.mkDefault true;
+      senpai.enable = lib.mkDefault true;
     };
 
     home-manager.sharedModules = [

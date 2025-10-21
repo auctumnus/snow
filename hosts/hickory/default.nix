@@ -22,6 +22,7 @@
     gnome.enable = true;
     nvidia.enable = true;
     claude.enable = true;
+    steam.enable = true;
   };
 
   time.timeZone = "America/Chicago";
