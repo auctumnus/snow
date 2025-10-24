@@ -22,14 +22,17 @@ nixpkgs.lib.nixosSystem {
       ./../hosts
       # per-system config
       ./../hosts/${hostname}
-      # home-manager
       inputs.home-manager.nixosModules.home-manager
-      # nixvim
       inputs.nixvim.nixosModules.nixvim
+      inputs.agenix.nixosModules.default
       {
         nixpkgs.overlays = [
           self.overlays.default
         ];
+
+        age.identityPaths = [ "/home/${username}/.ssh/id_ed25519" ];
+
+        environment.systemPackages = [ inputs.agenix.packages.x86_64-linux.default ];
 
         home-manager = {
           # use global `pkgs` from nixos; prevents extra nixpkgs evaluation

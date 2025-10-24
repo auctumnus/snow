@@ -12,6 +12,7 @@ in
           enable = true;
           enableFishIntegration = true;
           settings = {
+            font-family = "Berkeley Mono Variable";
             theme = "dark:GitHub Dark,light:GitHub Light Default";
           };
         };

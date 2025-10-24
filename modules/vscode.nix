@@ -42,6 +42,12 @@ in
                   version = "1.0.5959";
                   sha256 = "sha256-MibP2zqTwlXXVsXQOSuoi5SO8BskJC/AihrhJFg8tac=";
                 }
+                {
+                  name = "vscode-coverage-gutters";
+                  publisher = "ryanluker";
+                  version = "2.14.0";
+                  sha256 = "sha256-waF3FmncUsXqWFWGRy9X7RQ29BDRYlaqyFhEXg4HXNo=";
+                }
               ];
             userSettings = {
               "window.autoDetectColorScheme" = true;
@@ -51,6 +57,8 @@ in
               "nix.enableLanguageServer" = true;
               "nix.serverPath" = "${pkgs.nixd}/bin/nixd";
               "github.copilot.nextEditSuggestions.enabled" = true;
+              "editor.fontFamily" = "'Fira Code', monospace";
+              "terminal.integrated.fontFamily" = "'Berkeley Mono', 'Fira Code', monospace";
             };
           };
         };

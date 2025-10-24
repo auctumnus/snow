@@ -23,6 +23,8 @@
     nvidia.enable = true;
     claude.enable = true;
     steam.enable = true;
+    docker.enable = true;
+    berkeley-mono.enable = true;
   };
 
   time.timeZone = "America/Chicago";
