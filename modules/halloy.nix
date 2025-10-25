@@ -28,11 +28,14 @@ in
               in
               {
                 remexre = {
-                  inherit nickname nick_password_command;
+                  inherit nickname;
                   server = "chat.remexre.com";
-                  username = "autumn@hickory";
                   port = 6666;
                   channels = [ ];
+                  sasl.plain = {
+                    username = "autumn";
+                    password_command = nick_password_command;
+                  };
                 };
               };
             "buffer.channel.topic" = {

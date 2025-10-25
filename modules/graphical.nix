@@ -32,8 +32,16 @@ in
       obsidian
       vesktop
       _1password-gui
-      signal-desktop-bin
       krita
+      thunderbird
+      zoom-us
+
+      # fonts
+      noto-fonts
+      noto-fonts-cjk-sans
+      noto-fonts-cjk-serif
+      nerd-fonts.fira-code
+      nerd-fonts.fira-mono
     ];
   };
 }

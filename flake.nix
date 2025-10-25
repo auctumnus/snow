@@ -5,6 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     flake-parts.url = "github:hercules-ci/flake-parts";
     treefmt-nix.url = "github:numtide/treefmt-nix";
     nixvim = {
@@ -56,6 +57,12 @@
         nixosModules = lib.dirToAttrset ./modules;
         nixosConfigurations = lib.mkSystems [
           { hostname = "hickory"; }
+          {
+            hostname = "aspen";
+            modules = [
+              inputs.nixos-hardware.nixosModules.framework-intel-core-ultra-series1
+            ];
+          }
         ];
       };
     };

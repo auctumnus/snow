@@ -21,10 +21,20 @@ in
 
     home-manager.sharedModules = [
       {
-        programs.eza = {
-          enable = true;
-          git = true;
-          icons = "auto";
+        programs = {
+          eza = {
+            enable = true;
+            git = true;
+            icons = "auto";
+          };
+          tmux = {
+            enable = true;
+            sensibleOnTop = true;
+            extraConfig = ''
+              set -g status-bg "colour10"
+              set -g status-fg "colour255"
+            '';
+          };
         };
       }
     ];
@@ -84,6 +94,7 @@ in
       bat = {
         enable = true;
       };
+
     };
   };
 }

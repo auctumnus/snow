@@ -30,7 +30,10 @@ nixpkgs.lib.nixosSystem {
           self.overlays.default
         ];
 
-        age.identityPaths = [ "/home/${username}/.ssh/id_ed25519" ];
+        age.identityPaths = [
+          "/home/${username}/.ssh/id_ed25519"
+          "/home/${username}/.ssh/personal_ed25519"
+        ];
 
         environment.systemPackages = [ inputs.agenix.packages.x86_64-linux.default ];
 
@@ -42,7 +45,6 @@ nixpkgs.lib.nixosSystem {
           users.${username}.home = {
             username = username;
             homeDirectory = "/home/${username}";
-            stateVersion = "25.05";
           };
         };
       }

@@ -4,5 +4,4 @@ let
   secret = { inherit publicKeys; };
 in
 {
-  "berkeley-mono.age" = secret;
 }

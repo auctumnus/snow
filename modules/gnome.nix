@@ -18,6 +18,8 @@ in
       gtk.enable = lib.mkDefault true;
     };
 
+    services.gnome.gnome-keyring.enable = true;
+
     system.activationScripts.script.text = ''
       mkdir -p /var/lib/AccountsService/{icons,users}
       cp ${../resources/profile-picture.png} /var/lib/AccountsService/icons/${username}
@@ -33,6 +35,7 @@ in
     environment.systemPackages = with pkgs; [
       gnomeExtensions.night-theme-switcher
       hydrapaper-auctumnus
+      wl-clipboard
     ];
 
     home-manager.sharedModules = [

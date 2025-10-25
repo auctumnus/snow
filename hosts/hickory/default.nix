@@ -24,10 +24,19 @@
     claude.enable = true;
     steam.enable = true;
     docker.enable = true;
-    berkeley-mono.enable = true;
   };
 
   time.timeZone = "America/Chicago";
 
+  environment.systemPackages = with pkgs; [
+    signal-desktop-bin
+  ];
+
   system.stateVersion = "25.05";
+  home-manager.sharedModules = [
+    {
+      home.stateVersion = "25.05";
+
+    }
+  ];
 }
