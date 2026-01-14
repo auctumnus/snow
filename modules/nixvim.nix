@@ -32,7 +32,6 @@ in
         clang
       ];
       extraPlugins = with pkgs.vimPlugins; [
-        quick-scope
         auto-dark-mode
       ];
       extraConfigLua = ''
@@ -61,7 +60,7 @@ in
           plugins = true;
         };
         combinePlugins = {
-          enable = true;
+          enable = false;
           standalonePlugins = [
             "github-nvim-theme"
             "conform.nvim"

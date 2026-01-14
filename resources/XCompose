@@ -170,6 +170,8 @@ include "%L"
 
 # vowels
 
+<Multi_key> <e> <r> : "ɚ"
+
 # high vowels
 
 <Multi_key> <i> <slash> : "ɨ"
@@ -227,6 +229,14 @@ include "%L"
 <Multi_key> <T> <period> : "Ṭ"
 <Multi_key> <h> <period> : "ḥ"
 <Multi_key> <H> <period> : "Ḥ"
+
+# tilde
+<Multi_key> <E> <asciitilde> : "Ẽ"
+<Multi_key> <O> <asciitilde> : "Õ"
+<Multi_key> <Y> <asciitilde> : "Ỹ"
+<Multi_key> <e> <asciitilde> : "ẽ"
+<Multi_key> <o> <asciitilde> : "õ"
+<Multi_key> <y> <asciitilde> : "ỹ"
 
 # tone marks
 <Multi_key> <bar> <1> : "˩"

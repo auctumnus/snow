@@ -17,6 +17,11 @@ in
         programs.halloy = {
           enable = true;
           settings = {
+            font = {
+              family = "Berkeley Mono";
+              weight = "normal";
+              size = 15;
+            };
             theme = {
               light = "ferra-light";
               dark = "ferra-dark";
@@ -27,10 +32,9 @@ in
                 nick_password_command = "${pkgs.zenity}/bin/zenity --password";
               in
               {
-                remexre = {
+                kmwc = {
                   inherit nickname;
-                  server = "chat.remexre.com";
-                  port = 6666;
+                  server = "irc.kmwc.org";
                   channels = [ ];
                   sasl.plain = {
                     username = "autumn";

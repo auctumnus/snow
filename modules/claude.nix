@@ -26,10 +26,13 @@ in
               {
                 name = "claude-code";
                 publisher = "anthropic";
-                version = "2.0.22";
-                sha256 = "sha256-c94Cl64XpiUkUWaI24mKgJzZFaTjTyc5d75T6KFw1O0=";
+                version = "2.0.75";
+                sha256 = "sha256-PA7eL4TZTFYVlImXnZCw6aWjrLXl7/KndnkU3D2t1jw=";
               }
             ];
+            programs.vscode.profiles.default.userSettings = {
+              claudeCode.useTerminal = true;
+            };
           }
         ]
       else

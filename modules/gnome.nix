@@ -16,6 +16,7 @@ in
     snow = {
       graphical.enable = lib.mkDefault true;
       gtk.enable = lib.mkDefault true;
+      ime.enable = lib.mkDefault true;
     };
 
     services.gnome.gnome-keyring.enable = true;
@@ -50,15 +51,6 @@ in
           };
         };
 
-        home.activation.set-wallpapers = inputs.home-manager.lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-          hydrapaper=${pkgs.hydrapaper-auctumnus}/bin/hydrapaper
-
-          # set light mode wallpapers
-          run $hydrapaper -c ${../resources/wallpaper-light-1.png} ${../resources/wallpaper-light-2.png}
-
-          # set dark mode wallpapers
-          run $hydrapaper -d -c ${../resources/wallpaper-dark-1.jpg} ${../resources/wallpaper-dark-2.jpg}
-        '';
       }
     ];
 

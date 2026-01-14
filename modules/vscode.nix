@@ -16,7 +16,7 @@ in
       {
         programs.vscode = {
           enable = true;
-          mutableExtensionsDir = false;
+          mutableExtensionsDir = true;
           profiles.default = {
             extensions =
               with pkgs.vscode-extensions;
@@ -28,6 +28,7 @@ in
                 rust-lang.rust-analyzer
                 jnoortheen.nix-ide
                 github.copilot-chat
+                geequlim.godot-tools
               ]
               ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
                 {
@@ -60,6 +61,13 @@ in
               "editor.fontFamily" = "'Fira Code', monospace";
               "terminal.integrated.fontFamily" = "'Berkeley Mono', 'Fira Code', monospace";
             };
+            keybindings = [
+              {
+                key = "ctrl+shift+c";
+                command = "github.copilot.completions.toggle";
+                when = "textInputFocus";
+              }
+            ];
           };
         };
       }

@@ -24,6 +24,8 @@
     claude.enable = true;
     steam.enable = true;
     docker.enable = true;
+    minecraft.enable = true;
+    godot.enable = true;
   };
 
   time.timeZone = "America/Chicago";

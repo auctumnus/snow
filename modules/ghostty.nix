@@ -13,6 +13,8 @@ in
           enableFishIntegration = true;
           settings = {
             font-family = "Berkeley Mono Variable";
+            font-variation = "wdth=90";
+            font-size = 13;
             theme = "dark:GitHub Dark,light:GitHub Light Default";
           };
         };

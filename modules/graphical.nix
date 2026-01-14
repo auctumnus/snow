@@ -28,6 +28,10 @@ in
       }
     ];
 
+    nixpkgs.config.permittedInsecurePackages = [
+      "qtwebengine-5.15.19"
+    ];
+
     environment.systemPackages = with pkgs; [
       obsidian
       vesktop
@@ -35,13 +39,20 @@ in
       krita
       thunderbird
       zoom-us
-
-      # fonts
-      noto-fonts
-      noto-fonts-cjk-sans
-      noto-fonts-cjk-serif
-      nerd-fonts.fira-code
-      nerd-fonts.fira-mono
+      jellyfin-media-player
     ];
+
+    fonts = {
+      enableDefaultPackages = true;
+      packages = with pkgs; [
+        corefonts
+        vista-fonts
+        noto-fonts
+        noto-fonts-cjk-sans
+        noto-fonts-cjk-serif
+        nerd-fonts.fira-code
+        nerd-fonts.fira-mono
+      ];
+    };
   };
 }

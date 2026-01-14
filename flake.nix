@@ -10,9 +10,10 @@
     treefmt-nix.url = "github:numtide/treefmt-nix";
     nixvim = {
       url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
     agenix.url = "github:ryantm/agenix";
+    please.url = "github:auctumnus/please";
+    polymc.url = "github:PolyMC/PolyMC";
   };
 
   outputs =
@@ -48,11 +49,13 @@
           packages = {
             # fork of hydrapaper until the commit lands
             hydrapaper-auctumnus = pkgs.callPackage ./packages/hydrapaper-auctumnus/package.nix { };
+            sillytavern = pkgs.callPackage ./packages/sillytavern/package.nix { };
           };
         };
       flake = {
         overlays.default = _final: prev: {
           hydrapaper-auctumnus = self.packages.${prev.system}.hydrapaper-auctumnus;
+          sillytavern = self.packages.${prev.system}.sillytavern;
         };
         nixosModules = lib.dirToAttrset ./modules;
         nixosConfigurations = lib.mkSystems [

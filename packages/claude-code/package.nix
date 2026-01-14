@@ -1,0 +1,60 @@
+{
+  lib,
+  buildNpmPackage,
+  fetchzip,
+  writableTmpDirAsHomeHook,
+  versionCheckHook,
+}:
+buildNpmPackage (finalAttrs: {
+  pname = "claude-code";
+  version = "2.0.74";
+
+  src = fetchzip {
+    url = "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-${finalAttrs.version}.tgz";
+    hash = "sha256-xa9etUBw1UIoHc44ypQ83PQKVNC0KS/DGwnZrvW9ero=";
+  };
+
+  npmDepsHash = "sha256-fUxOINLRXoXYyQzxmo2vtolzMr7mBIAct9hwNOAhNdg=";
+
+  postPatch = ''
+    cp ${./package-lock.json} package-lock.json
+  '';
+
+  dontNpmBuild = true;
+
+  env.AUTHORIZED = "1";
+
+  # `claude-code` tries to auto-update by default, this disables that functionality.
+  # https://docs.anthropic.com/en/docs/agents-and-tools/claude-code/overview#environment-variables
+  # The DEV=true env var causes claude to crash with `TypeError: window.WebSocket is not a constructor`
+  postInstall = ''
+    wrapProgram $out/bin/claude \
+      --set DISABLE_AUTOUPDATER 1 \
+      --unset DEV
+  '';
+
+  doInstallCheck = true;
+  nativeInstallCheckInputs = [
+    writableTmpDirAsHomeHook
+    versionCheckHook
+  ];
+  versionCheckKeepEnvironment = [ "HOME" ];
+  versionCheckProgramArg = "--version";
+
+  passthru.updateScript = ./update.sh;
+
+  meta = {
+    description = "Agentic coding tool that lives in your terminal, understands your codebase, and helps you code faster";
+    homepage = "https://github.com/anthropics/claude-code";
+    downloadPage = "https://www.npmjs.com/package/@anthropic-ai/claude-code";
+    license = lib.licenses.beerware;
+    maintainers = with lib.maintainers; [
+      adeci
+      malo
+      markus1189
+      omarjatoi
+      xiaoxiangmoe
+    ];
+    mainProgram = "claude";
+  };
+})

@@ -4,6 +4,8 @@
   pkgs,
   lib,
   config,
+  inputs,
+  system,
   ...
 }:
 let
@@ -21,6 +23,7 @@ in
 
     home-manager.sharedModules = [
       {
+        home.sessionPath = [ "$HOME/.local/share/npm" ];
         programs = {
           eza = {
             enable = true;
@@ -34,6 +37,41 @@ in
               set -g status-bg "colour10"
               set -g status-fg "colour255"
             '';
+          };
+          zoxide = {
+            enable = true;
+            options = [ "--cmd cd" ];
+          };
+          direnv = {
+            enable = true;
+            nix-direnv.enable = true;
+          };
+          bat = {
+            enable = true;
+          };
+          fish = {
+            enable = true;
+            interactiveShellInit = ''
+              set fish_greeting
+              set -U fish_key_bindings fish_hybrid_key_bindings
+            '';
+
+            shellInit = ''
+              export PATH="/home/autumn/.local/share/npm/bin:$PATH"
+            '';
+
+            shellAliases = {
+              ls = "eza";
+              la = "ls -la";
+              d = "function _d; eval $argv; ${pkgs.libnotify}/bin/notify-send \"Done: $argv\"; end; _d";
+            };
+
+            plugins = [
+              {
+                name = "tide";
+                src = ../resources/tide;
+              }
+            ];
           };
         };
       }
@@ -55,6 +93,7 @@ in
       fd
       httpie
       jq
+      inputs.please.packages.${pkgs.system}.default
     ];
 
     # man pages
@@ -63,38 +102,7 @@ in
     programs = {
       fish = {
         enable = true;
-        interactiveShellInit = ''
-          set fish_greeting
-          ${pkgs.starship}/bin/starship init fish | source
-        '';
-
-        shellInit = ''
-          ${pkgs.any-nix-shell}/bin/any-nix-shell fish --info-right | source
-        '';
-        shellAliases = {
-          ls = "eza";
-          la = "ls -la";
-          d = "function _d; eval $argv; ${pkgs.libnotify}/bin/notify-send \"Done: $argv\"; end; _d";
-        };
       };
-
-      # TODO: replace with our own
-      starship = {
-        enable = true;
-        settings = pkgs.lib.importTOML ../resources/starship.toml;
-      };
-      zoxide = {
-        enable = true;
-        flags = [ "--cmd cd" ];
-      };
-      direnv = {
-        enable = true;
-        nix-direnv.enable = true;
-      };
-      bat = {
-        enable = true;
-      };
-
     };
   };
 }
