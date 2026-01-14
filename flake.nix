@@ -14,6 +14,8 @@
     agenix.url = "github:ryantm/agenix";
     please.url = "github:auctumnus/please";
     polymc.url = "github:PolyMC/PolyMC";
+    tide.url = "github:auctumnus/tide/fix/character-empty-fish-key-bindings";
+    tide.flake = false;
   };
 
   outputs =

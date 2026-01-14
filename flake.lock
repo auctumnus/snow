@@ -402,6 +402,7 @@
         "nixvim": "nixvim",
         "please": "please",
         "polymc": "polymc",
+        "tide": "tide",
         "treefmt-nix": "treefmt-nix"
       }
     },
@@ -450,6 +451,23 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "tide": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1768366144,
+        "narHash": "sha256-iXa5PvHqt0qsCe1rvdHULaeKoNyXNrnWeJuFsUpj5w8=",
+        "owner": "auctumnus",
+        "repo": "tide",
+        "rev": "ad6d593a7c3b8ce29263c45bd5edb70fdafda521",
+        "type": "github"
+      },
+      "original": {
+        "owner": "auctumnus",
+        "ref": "fix/character-empty-fish-key-bindings",
+        "repo": "tide",
         "type": "github"
       }
     },

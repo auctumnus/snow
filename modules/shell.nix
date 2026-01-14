@@ -69,7 +69,7 @@ in
             plugins = [
               {
                 name = "tide";
-                src = ../resources/tide;
+                src = inputs.tide;
               }
             ];
           };

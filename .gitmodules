@@ -1,3 +1,0 @@
-[submodule "resources/tide"]
-	path = resources/tide
-	url = git@github.com:auctumnus/tide.git
