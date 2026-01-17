@@ -14,7 +14,7 @@ in
           settings = {
             font-family = "Berkeley Mono Variable";
             font-variation = "wdth=90";
-            font-size = 13;
+            font-size = 11;
             theme = "dark:GitHub Dark,light:GitHub Light Default";
             #font-features = "calt, liga, dlig";
             shell-integration-features = "ssh-env";

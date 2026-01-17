@@ -54,11 +54,11 @@ in
       colorschemes.github-theme.enable = true;
       colorscheme = "vim";
       performance = {
-        byteCompileLua = {
-          enable = true;
-          nvimRuntime = true;
-          plugins = true;
-        };
+        #byteCompileLua = {
+        #  enable = true;
+        #  nvimRuntime = true;
+        #  plugins = true;
+        #};
         combinePlugins = {
           enable = false;
           standalonePlugins = [
@@ -180,7 +180,7 @@ in
 
       ]
       # window movement
-      ++ (builtins.map
+      ++ (map
         (x: {
           action = "<C-w><${x}>";
           key = "<C-${x}>";
@@ -285,7 +285,6 @@ in
         };
         treesitter = {
           enable = true;
-          settings.auto_install = true;
           nixvimInjections = true;
         };
         # trouble.enable = true;
