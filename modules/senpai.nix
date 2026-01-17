@@ -31,7 +31,7 @@ in
         programs.senpai = {
           enable = true;
           config = {
-            address = "chat.remexre.com:6666";
+            address = "irc.kmwc.org:6697";
             username = "autumn@hickory";
             nickname = "autumn";
             password-cmd = [

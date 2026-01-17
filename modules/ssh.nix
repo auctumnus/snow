@@ -10,6 +10,8 @@ in
   options.snow.ssh.enable = lib.mkEnableOption "ssh";
   config = lib.mkIf cfg.enable {
     snow.gpg.enable = true; # we use the gpg-agent for ssh
+    programs.ssh.startAgent = true;
+
     services.openssh = {
       enable = true;
       openFirewall = true;

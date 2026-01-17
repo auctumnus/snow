@@ -20,6 +20,7 @@ in
     };
 
     services.gnome.gnome-keyring.enable = true;
+    services.gnome.gcr-ssh-agent.enable = false;
 
     system.activationScripts.script.text = ''
       mkdir -p /var/lib/AccountsService/{icons,users}
@@ -37,6 +38,7 @@ in
       gnomeExtensions.night-theme-switcher
       hydrapaper-auctumnus
       wl-clipboard
+      gnomeExtensions.caffeine
     ];
 
     home-manager.sharedModules = [
@@ -47,6 +49,7 @@ in
             disable-user-extensions = false;
             enabled-extensions = with pkgs.gnomeExtensions; [
               night-theme-switcher.extensionUuid
+              caffeine.extensionUuid
             ];
           };
         };
@@ -93,7 +96,11 @@ in
 
     security = {
       # RealtimeKit: allows pipewire to play audio in realtime
-      rtkit.enable = true;
+      rtkit = {
+        enable = true;
+        # https://wiki.archlinux.org/title/PipeWire#Missing_realtime_priority/crackling_under_load_after_suspend
+        args = [ "--no-canary" ];
+      };
       polkit.enable = true;
     };
 

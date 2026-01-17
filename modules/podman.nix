@@ -2,6 +2,7 @@
   config,
   lib,
   username,
+  pkgs,
   ...
 }:
 let
@@ -22,5 +23,9 @@ in
       defaultNetwork.settings.dns_enabled = true;
     };
     users.users.${username}.extraGroups = [ "podman" ];
+    environment.systemPackages = with pkgs; [
+      podman-tui
+      podman-compose
+    ];
   };
 }

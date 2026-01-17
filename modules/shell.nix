@@ -94,6 +94,7 @@ in
       httpie
       jq
       inputs.please.packages.${pkgs.system}.default
+      ntfy-sh
     ];
 
     # man pages

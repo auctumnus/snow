@@ -16,6 +16,8 @@ in
             font-variation = "wdth=90";
             font-size = 13;
             theme = "dark:GitHub Dark,light:GitHub Light Default";
+            #font-features = "calt, liga, dlig";
+            shell-integration-features = "ssh-env";
           };
         };
       }
