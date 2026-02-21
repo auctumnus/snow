@@ -18,6 +18,7 @@ in
       firefox.enable = lib.mkDefault true;
       ghostty.enable = lib.mkDefault true;
       vscode.enable = lib.mkDefault true;
+      zed.enable = lib.mkDefault true;
       mpv.enable = lib.mkDefault true;
       halloy.enable = lib.mkDefault true;
     };
@@ -33,6 +34,8 @@ in
     ];
 
     environment.systemPackages = with pkgs; [
+      ffmpeg-headless
+      ffmpegthumbnailer
       obsidian
       vesktop
       _1password-gui
@@ -40,6 +43,8 @@ in
       thunderbird
       zoom-us
       jellyfin-media-player
+      gimp
+      inkscape
     ];
 
     fonts = {
@@ -52,6 +57,9 @@ in
         noto-fonts-cjk-serif
         nerd-fonts.fira-code
         nerd-fonts.fira-mono
+        roboto-slab
+        roboto
+        roboto-serif
       ];
     };
   };

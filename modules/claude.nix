@@ -18,20 +18,17 @@ in
       nodejs_24
     ];
 
+    programs.nix-ld = {
+      enable = true;
+    };
+
     home-manager.sharedModules = (
       if config.snow.vscode.enable then
         [
           {
-            programs.vscode.profiles.default.extensions = pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-              {
-                name = "claude-code";
-                publisher = "anthropic";
-                version = "2.0.75";
-                sha256 = "sha256-LXUIp+Rqh0prvFLgmbiSVJYHNY2ECVAfK8GLmDRMcxU=";
-              }
-            ];
+            programs.vscode.profiles.default.extensions = [ pkgs.claude-vscode ];
             programs.vscode.profiles.default.userSettings = {
-              "claude-code.useTerminal" = true;
+              claude-code.useTerminal = true;
             };
           }
         ]

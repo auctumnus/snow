@@ -9,8 +9,16 @@ in
 {
   options.snow.steam.enable = lib.mkEnableOption "steam";
   config = lib.mkIf cfg.enable {
-    programs.steam = {
-      enable = true;
+    programs = {
+      steam = {
+        enable = true;
+        gamescopeSession = {
+          enable = true;
+        };
+      };
+      gamescope = {
+        enable = true;
+      };
     };
     hardware.xone.enable = true;
   };

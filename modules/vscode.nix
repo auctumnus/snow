@@ -60,6 +60,7 @@ in
               "github.copilot.nextEditSuggestions.enabled" = true;
               "editor.fontFamily" = "'Fira Code', monospace";
               "terminal.integrated.fontFamily" = "'Berkeley Mono', 'Fira Code', monospace";
+              "claudeCode.useTerminal" = true;
             };
             keybindings = [
               {

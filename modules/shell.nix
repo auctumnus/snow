@@ -54,6 +54,22 @@ in
             interactiveShellInit = ''
               set fish_greeting
               set -U fish_key_bindings fish_hybrid_key_bindings
+
+              function nr
+                  if string match -q '*[#:]*' -- $argv[1]
+                      nix run $argv[1]
+                  else
+                      nix run nixpkgs#$argv[1]
+                  end
+              end
+
+              function ns
+                  if string match -q '*[#:]*' -- $argv[1]
+                      nix shell $argv[1]
+                  else
+                      nix shell nixpkgs#$argv[1]
+                  end
+              end
             '';
 
             shellInit = ''

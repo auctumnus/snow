@@ -38,8 +38,12 @@
         "x86_64-darwin"
       ];
       perSystem =
-        { pkgs, ... }:
+        { pkgs, system, ... }:
         {
+          _module.args.pkgs = import self.inputs.nixpkgs {
+            inherit system;
+            config.allowUnfree = true;
+          };
           treefmt = {
             projectRootFile = "flake.nix";
             programs = {
@@ -51,14 +55,24 @@
           packages = {
             # fork of hydrapaper until the commit lands
             hydrapaper-auctumnus = pkgs.callPackage ./packages/hydrapaper-auctumnus/package.nix { };
+            claude-vscode = pkgs.callPackage ./packages/claude-vscode/package.nix { };
             sillytavern = pkgs.callPackage ./packages/sillytavern/package.nix { };
           };
         };
       flake = {
-        overlays.default = _final: prev: {
-          hydrapaper-auctumnus = self.packages.${prev.system}.hydrapaper-auctumnus;
-          sillytavern = self.packages.${prev.system}.sillytavern;
-        };
+        overlays.default =
+          _final: prev:
+          let
+            from-pkgs = name: { ${name} = self.packages.${prev.system}.${name}; };
+            merge = s: builtins.foldl' (x: y: x // y) { } s;
+          in
+          merge (
+            map from-pkgs [
+              "hydrapaper-auctumnus"
+              "claude-vscode"
+              "sillytavern"
+            ]
+          );
         nixosModules = lib.dirToAttrset ./modules;
         nixosConfigurations = lib.mkSystems [
           { hostname = "hickory"; }

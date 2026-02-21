@@ -34,6 +34,9 @@
     # hostname gets passed in from mkSystem
     hostName = hostname;
     networkmanager.enable = true;
+    hosts = {
+      #      "0.0.0.0" = [ "x.com" ];
+    };
   };
 
   i18n = {
@@ -62,5 +65,8 @@
   };
 
   # cpu microcode and such
-  hardware.enableRedistributableFirmware = true;
+  hardware = {
+    enableRedistributableFirmware = true;
+    keyboard.qmk.keychronSupport = true;
+  };
 }
