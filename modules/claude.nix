@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }:
 let
@@ -12,8 +13,7 @@ in
 
   config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-      claude-code
-
+      inputs.claude-code.packages."x86_64-linux".claude-code
       # claude code in vscode requires this; TODO: can we get this to only be visible to vscode?
       nodejs_24
     ];

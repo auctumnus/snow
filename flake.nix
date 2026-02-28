@@ -16,6 +16,7 @@
     polymc.url = "github:PolyMC/PolyMC";
     tide.url = "github:auctumnus/tide/fix/character-empty-fish-key-bindings";
     tide.flake = false;
+    claude-code.url = "github:sadjow/claude-code-nix";
   };
 
   outputs =

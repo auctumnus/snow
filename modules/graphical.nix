@@ -45,6 +45,7 @@ in
       jellyfin-media-player
       gimp
       inkscape
+      feishin
     ];
 
     fonts = {
